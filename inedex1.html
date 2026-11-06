@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#140d26">
+<meta name="description" content="Celebrate the Festival of Lights with a joyful Diwali greeting from Cybernga Computer Services.">
+<title>Happy Diwali | Cybernga Computer Services</title>
+<style>
+:root{
+ color-scheme:dark;
+ --night:#140d26;
+ --cream:#fff2d6;
+ --gold:#ffd477;
+ --muted:#c8bbd8;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;
+ min-width:320px;
+ color:var(--cream);
+ background:var(--night);
+ font-family:Georgia,"Times New Roman",serif;
+}
+button,a{-webkit-tap-highlight-color:transparent}
+.scroll-progress{
+ position:fixed;
+ z-index:5;
+ top:0;
+ left:0;
+ width:100%;
+ height:3px;
+ background:#ffffff18;
+ pointer-events:none;
+}
+.scroll-progress span{
+ display:block;
+ width:100%;
+ height:100%;
+ background:linear-gradient(90deg,#ff8e72,#ffd477,#9ce4bc);
+ transform:scaleX(0);
+ transform-origin:left;
+}
+.page{
+ min-height:100vh;
+ position:relative;
+ overflow:hidden;
+ background:
+  radial-gradient(ellipse at 50% 66%,rgba(121,49,94,.42),transparent 42%),
+  linear-gradient(180deg,#100b21 0%,#25143c 53%,#4a2147 100%);
+}
+.stars,.fireworks{
+ position:fixed;
+ top:0;
+ left:0;
+ width:100%;
+ height:100vh;
+ pointer-events:none;
+}
+.stars{z-index:0;opacity:.7}
+.fireworks{z-index:1}
+.hero{
+ position:relative;
+ z-index:2;
+ width:min(1100px,100%);
+ min-height:590px;
+ margin:0 auto;
+ padding:44px 24px 0;
+ text-align:center;
+}
+.sky-lantern{
+ position:absolute;
+ z-index:0;
+ width:36px;
+ height:50px;
+ opacity:.8;
+ filter:drop-shadow(0 0 15px #ffb84c99);
+ animation:lantern-drift 7s ease-in-out infinite;
+}
+.sky-lantern::before{
+ content:"";
+ position:absolute;
+ top:0;
+ left:50%;
+ width:1px;
+ height:13px;
+ background:#eacb9a99;
+}
+.sky-lantern::after{
+ content:"";
+ position:absolute;
+ left:6px;
+ top:12px;
+ width:24px;
+ height:31px;
+ border:1px solid #ffe4a0;
+ border-radius:9px 9px 12px 12px;
+ background:linear-gradient(90deg,#ffad4caa,#ffe38c,#ffad4caa);
+ box-shadow:inset 0 0 8px #fff3ad,0 0 18px #ffb84c99;
+ clip-path:polygon(15% 0,85% 0,100% 85%,50% 100%,0 85%);
+}
+.sky-lantern.left{left:10%;top:140px;animation-delay:-2s}
+.sky-lantern.right{right:11%;top:190px;width:28px;height:40px;transform:scale(.8);animation-delay:-4.5s}
+.sky-lantern.right::after{left:5px;width:19px;height:25px}
+.hero>*:not(.sky-lantern){position:relative;z-index:1}
+.hero .eyebrow{animation:rise-in .8s both}
+.hero h1{animation:title-glow 3.2s ease-in-out infinite alternate,hero-enter 1s .1s both}
+.hero .subtitle{animation:rise-in .8s .2s both}
+.hero-actions{animation:rise-in .8s .35s both}
+.eyebrow{
+ margin:0 0 12px;
+ color:#ffd98e;
+ font:700 12px/1.4 Arial,sans-serif;
+ letter-spacing:.3em;
+ text-transform:uppercase;
+}
+h1{
+ margin:0;
+ color:#fff1ce;
+ font-size:clamp(54px,10vw,112px);
+ line-height:.96;
+ font-weight:500;
+ letter-spacing:-.055em;
+ text-shadow:0 0 22px #ffc55b66,0 5px 35px #ff8e4a55;
+ animation:title-glow 3.2s ease-in-out infinite alternate;
+}
+.subtitle{
+ max-width:620px;
+ margin:20px auto 0;
+ color:#e7d8eb;
+ font-size:clamp(16px,2.4vw,21px);
+ line-height:1.6;
+}
+.hero-actions{
+ display:flex;
+ justify-content:center;
+ flex-wrap:wrap;
+ gap:12px;
+ margin-top:25px;
+}
+.action{
+ position:relative;
+ overflow:hidden;
+ isolation:isolate;
+ min-height:46px;
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ gap:9px;
+ padding:0 20px;
+ border:1px solid #ffd98688;
+ border-radius:999px;
+ color:#25132c;
+ background:linear-gradient(135deg,#ffe49d,#ffb65c);
+ font:700 14px Arial,sans-serif;
+ text-decoration:none;
+ cursor:pointer;
+ box-shadow:0 5px 22px #ffad4e33;
+ transition:transform .2s ease,filter .2s ease;
+}
+.action:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.action:not(.secondary)::after{
+ content:"";
+ position:absolute;
+ z-index:-1;
+ top:-65%;
+ left:-45%;
+ width:28%;
+ height:230%;
+ background:linear-gradient(90deg,transparent,#ffffff80,transparent);
+ transform:rotate(22deg);
+ animation:button-shine 5s 1.5s ease-in-out infinite;
+}
+.action.secondary{color:#fff1d2;background:#ffffff0d;box-shadow:none}
+.action:focus-visible,a:focus-visible{outline:3px solid #fff2bd;outline-offset:4px}
+.scene{
+ position:relative;
+ z-index:1;
+ width:min(1050px,100%);
+ margin:-8px auto 0;
+}
+.scene{animation:scene-enter 1.2s .15s both}
+.hill-back{animation:hill-drift 9s ease-in-out infinite alternate;transform-origin:center}
+.hill-front{animation:hill-drift 7s ease-in-out infinite alternate-reverse;transform-origin:center}
+.tree{transform-box:fill-box;transform-origin:bottom center;animation:tree-sway 4.5s ease-in-out infinite alternate}
+.tree:nth-of-type(2){animation-delay:-2s}
+.person>g{transform-box:fill-box;transform-origin:center bottom;animation:village-dance 2.4s ease-in-out infinite}
+.person>g:nth-child(2){animation-delay:-.7s}
+.person>g:nth-child(3){animation-delay:-1.2s}
+.person>g:nth-child(4){animation-delay:-1.7s}
+.village{
+ display:block;
+ width:100%;
+ height:auto;
+ overflow:visible;
+}
+.ground{fill:#180e24}
+.hill-back{fill:#291333}
+.hill-front{fill:#1e102a}
+.house-wall{fill:#e2a35a}
+.house-side{fill:#b6654a}
+.house-roof{fill:#722e50}
+.house-trim{fill:#ffd17b}
+.door{fill:#4a263a}
+.window{fill:#ffd57b;filter:url(#window-glow)}
+.tree{fill:#226254}
+.trunk{fill:#533245}
+.person{stroke:#30203a;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.garland{fill:none;stroke:#eeb76b;stroke-width:2}
+.bulb{filter:url(#window-glow);animation:twinkle 1.4s ease-in-out infinite alternate}
+.bulb:nth-of-type(2n){animation-delay:.7s}
+.diya-flame{transform-box:fill-box;transform-origin:center bottom;animation:flame 1s ease-in-out infinite alternate}
+.fireworks{z-index:0}
+.firework-dot{filter:drop-shadow(0 0 5px currentColor)}
+.scene-caption{
+ margin:-3px 0 22px;
+ color:#f1d8ae;
+ text-align:center;
+ font:12px Arial,sans-serif;
+ letter-spacing:.11em;
+ text-transform:uppercase;
+}
+.celebration-section{
+ position:relative;
+ z-index:2;
+ width:min(1020px,100%);
+ margin:0 auto;
+ padding:94px 24px;
+ text-align:center;
+}
+.section-kicker{
+ margin:0 0 11px;
+ color:#ffda8b;
+ font:700 11px Arial,sans-serif;
+ letter-spacing:.24em;
+ text-transform:uppercase;
+}
+.section-heading{
+ margin:0;
+ color:#fff1d2;
+ font-size:clamp(34px,6vw,58px);
+ font-weight:500;
+ letter-spacing:-.035em;
+}
+.section-copy{
+ max-width:620px;
+ margin:14px auto 30px;
+ color:var(--muted);
+ font:15px/1.7 Arial,sans-serif;
+}
+.reveal{
+ opacity:0;
+ transform:translateY(30px);
+ transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);
+}
+.reveal.is-visible{opacity:1;transform:translateY(0)}
+.frame-carousel{
+ position:relative;
+ overflow:hidden;
+ border:1px solid #fff2d622;
+ border-radius:24px;
+ background:linear-gradient(145deg,#321b46dd,#1d132ddf);
+ box-shadow:0 24px 70px #08051055;
+ text-align:left;
+}
+.frame-track{
+ display:flex;
+ transition:transform .65s cubic-bezier(.2,.7,.2,1);
+}
+.festival-frame{
+ flex:0 0 100%;
+ min-height:310px;
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ align-items:center;
+ gap:25px;
+ padding:clamp(24px,6vw,54px);
+}
+.frame-art{
+ min-height:215px;
+ display:grid;
+ place-items:center;
+ overflow:hidden;
+ border:1px solid #fff3d21a;
+ border-radius:19px;
+ background:
+  radial-gradient(circle at 50% 62%,#ffb65144,transparent 37%),
+  linear-gradient(160deg,#47264e,#211332);
+ font-size:clamp(76px,12vw,126px);
+ text-shadow:0 0 35px #ffbd5b77;
+}
+.frame-art span{display:inline-block;animation:float-lantern 2.8s ease-in-out infinite}
+.festival-frame:nth-child(even) .frame-art{background:radial-gradient(circle at 50% 65%,#f46c7b33,transparent 40%),linear-gradient(160deg,#3b254f,#201534)}
+.festival-frame h3{margin:0 0 12px;color:#ffe5ae;font-size:clamp(24px,4vw,36px);font-weight:500}
+.festival-frame p{margin:0;color:#d4c6dc;font:15px/1.75 Arial,sans-serif}
+.frame-count{display:block;margin-top:18px;color:#ffdb91;font:700 11px Arial,sans-serif;letter-spacing:.15em}
+.carousel-controls{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:16px;
+ padding:0 24px 22px;
+}
+.carousel-autoplay{
+ display:flex;
+ justify-content:center;
+ margin-top:-7px;
+ padding-bottom:18px;
+}
+.carousel-autoplay button{
+ border:0;
+ color:#d5c7dc;
+ background:transparent;
+ font:12px Arial,sans-serif;
+ cursor:pointer;
+}
+.carousel-autoplay button:hover{color:#ffdc91}
+.carousel-arrow{
+ width:44px;
+ height:44px;
+ border:1px solid #ffd98666;
+ border-radius:50%;
+ color:#ffe7bb;
+ background:#ffffff0b;
+ font-size:20px;
+ cursor:pointer;
+ transition:background .2s ease,transform .2s ease;
+}
+.carousel-arrow:hover{transform:scale(1.08);background:#ffd47722}
+.carousel-arrow:active{scale:.9}
+.carousel-arrow:focus-visible,.diya:focus-visible,.wish-button:focus-visible,.frame-dot:focus-visible{outline:3px solid #fff2bd;outline-offset:3px}
+.frame-dots{display:flex;justify-content:center;gap:9px}
+.frame-dot{
+ width:9px;
+ height:9px;
+ padding:0;
+ border:0;
+ border-radius:50%;
+ background:#816987;
+ cursor:pointer;
+ transition:background .2s ease,transform .2s ease;
+}
+.frame-dot[aria-current="true"]{transform:scale(1.35);background:#ffd477}
+.diya-section{
+ padding-top:65px;
+ border-top:1px solid #fff2d61c;
+ border-bottom:1px solid #fff2d61c;
+ background:linear-gradient(180deg,#170e27aa,#32173888,#170e27aa);
+}
+.diya-grid{
+ display:grid;
+ grid-template-columns:repeat(6,minmax(0,1fr));
+ gap:12px;
+ max-width:690px;
+ margin:32px auto 22px;
+}
+.diya{
+ min-height:102px;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+ gap:8px;
+ border:1px solid #f5d49026;
+ border-radius:17px;
+ color:#c3b4cf;
+ background:#140d2655;
+ cursor:pointer;
+ transition:transform .25s ease,border-color .25s ease,background .25s ease,color .25s ease;
+}
+.diya:hover{transform:translateY(-4px);border-color:#ffd47777}
+.diya-bowl{
+ position:relative;
+ width:36px;
+ height:17px;
+ border:2px solid #b77c65;
+ border-top:0;
+ border-radius:0 0 50% 50%;
+ background:linear-gradient(180deg,#bc684d,#6e394a);
+}
+.diya-flame-icon{
+ position:absolute;
+ left:50%;
+ bottom:10px;
+ width:11px;
+ height:17px;
+ border-radius:80% 10% 70% 20%;
+ background:#ffdf8a;
+ opacity:0;
+ transform:translateX(-50%) rotate(42deg) scale(.5);
+ transition:opacity .25s ease,transform .25s ease;
+ filter:drop-shadow(0 0 9px #ffb84c);
+}
+.diya.is-lit{color:#ffe7b0;border-color:#ffd47777;background:#ffca5b10}
+.diya.is-lit .diya-flame-icon{opacity:1;transform:translateX(-50%) rotate(42deg) scale(1);animation:flame 1s ease-in-out infinite alternate}
+.diya.is-lighting{animation:diya-pop .42s cubic-bezier(.16,1,.3,1)}
+.diya-name{font:11px Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.diya-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:11px}
+.diya-count{min-height:20px;margin:17px 0 0;color:#d6c4df;font:13px Arial,sans-serif}
+.wish-card{
+ max-width:700px;
+ margin:32px auto 0;
+ padding:clamp(26px,6vw,48px);
+ border:1px solid #ffd47744;
+ border-radius:22px;
+ background:linear-gradient(145deg,#3d224bdd,#211430ed);
+ box-shadow:0 20px 60px #08051044;
+ animation:card-breathe 5s ease-in-out infinite alternate;
+}
+.wish-quote{
+ min-height:92px;
+ display:grid;
+ place-items:center;
+ margin:0;
+ color:#fff0d1;
+ font-size:clamp(21px,4vw,31px);
+ line-height:1.55;
+}
+.wish-credit{margin:13px 0 23px;color:#d3bfdc;font:12px Arial,sans-serif}
+.wish-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:10px}
+.wish-button{
+ min-height:43px;
+ padding:0 18px;
+ border:1px solid #ffd98666;
+ border-radius:999px;
+ color:#ffe5b4;
+ background:#ffffff0b;
+ font:700 12px Arial,sans-serif;
+ cursor:pointer;
+ transition:background .2s ease,transform .2s ease;
+}
+.wish-button:hover{transform:translateY(-2px);background:#ffd4771c}
+.wish-button.primary{color:#25132c;background:linear-gradient(135deg,#ffe49d,#ffb65c)}
+.wish-status{min-height:18px;margin:14px 0 0;color:#ffe2a1;font:12px Arial,sans-serif}
+.footer{z-index:2}
+.footer{
+ position:relative;
+ z-index:2;
+ padding:26px 20px 34px;
+ border-top:1px solid #fff2d61c;
+ background:#100b20c9;
+ text-align:center;
+}
+.footer-mark{
+ display:inline-flex;
+ width:40px;
+ height:40px;
+ align-items:center;
+ justify-content:center;
+ margin-bottom:9px;
+ border:1px solid #f4c67988;
+ border-radius:50%;
+ color:#ffda8b;
+ font:20px Georgia,serif;
+ animation:mark-glow 2.4s ease-in-out infinite alternate;
+}
+.footer p{margin:5px;color:var(--muted);font:13px/1.6 Arial,sans-serif}
+.footer .brand{color:#fff0d2;font:600 19px Georgia,serif}
+.footer a{color:#ffdc91;text-decoration:none}
+.footer a:hover{text-decoration:underline}
+.footer-note{margin-top:13px!important;font-size:11px!important;color:#9e8cae!important}
+.sr-only{
+ position:absolute;
+ width:1px;
+ height:1px;
+ padding:0;
+ margin:-1px;
+ overflow:hidden;
+ clip:rect(0,0,0,0);
+ white-space:nowrap;
+ border:0;
+}
+@keyframes title-glow{
+ from{text-shadow:0 0 18px #ffc55b44,0 5px 26px #ff8e4a33}
+ to{text-shadow:0 0 30px #ffc55b88,0 5px 45px #ff8e4a66}
+}
+@keyframes twinkle{from{opacity:.55}to{opacity:1}}
+@keyframes flame{from{transform:scale(.88) rotate(-4deg)}to{transform:scale(1.1) rotate(4deg)}}
+@keyframes float-lantern{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-12px) rotate(3deg)}}
+@keyframes lantern-drift{0%,100%{translate:0 12px}50%{translate:6px -15px}}
+@keyframes hero-enter{from{opacity:0;filter:blur(8px);transform:translateY(22px) scale(.97)}to{opacity:1;filter:blur(0);transform:translateY(0) scale(1)}}
+@keyframes rise-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scene-enter{from{opacity:.5;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes hill-drift{from{translate:-5px 0}to{translate:5px -3px}}
+@keyframes tree-sway{from{rotate:-2deg}to{rotate:2deg}}
+@keyframes village-dance{0%,100%{translate:0 0;rotate:-1deg}50%{translate:0 -6px;rotate:1deg}}
+@keyframes diya-pop{0%{scale:.85}65%{scale:1.13}100%{scale:1}}
+@keyframes mark-glow{from{box-shadow:0 0 0 #ffce6b00}to{box-shadow:0 0 24px #ffce6b55}}
+@keyframes button-shine{0%,65%,100%{left:-45%}82%{left:130%}}
+@keyframes card-breathe{from{box-shadow:0 20px 60px #08051044}to{box-shadow:0 24px 70px #ffb84c1b}}
+@media(max-width:600px){
+ .hero{min-height:500px;padding:38px 18px 0}
+ .subtitle{margin-top:15px}
+ .scene{width:125%;margin:12px 0 0 -12.5%}
+ .scene-caption{margin-top:1px;font-size:10px}
+ .action{min-height:44px;padding:0 16px}
+ .celebration-section{padding:68px 18px}
+ .festival-frame{grid-template-columns:1fr;gap:20px;padding:22px;min-height:0}
+ .frame-art{min-height:160px}
+ .carousel-controls{padding:0 16px 17px}
+ .diya-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+ .diya{min-height:91px}
+ .diya-section{padding-top:55px}
+ .sky-lantern.left{left:3%;top:210px;scale:.7}
+ .sky-lantern.right{right:2%;top:255px;scale:.65}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+ .reveal{opacity:1;transform:none}
+ .scroll-progress{display:none}
+}
+</style>
+</head>
+<body>
+<div class="scroll-progress" aria-hidden="true"><span id="scroll-progress-bar"></span></div>
+<main class="page">
+ <canvas class="stars" id="stars" aria-hidden="true"></canvas>
+ <canvas class="fireworks" id="fireworks" aria-hidden="true"></canvas>
+
+ <section class="hero" aria-labelledby="greeting">
+  <span class="sky-lantern left" aria-hidden="true"></span>
+  <span class="sky-lantern right" aria-hidden="true"></span>
+  <p class="eyebrow">A festival of light, love &amp; new beginnings</p>
+  <h1 id="greeting">Happy<br>Diwali</h1>
+  <p class="subtitle">May your home glow with happiness, your heart shine with hope, and the year ahead bring you joy and prosperity.</p>
+  <div class="hero-actions">
+   <button class="action" id="celebrate" type="button"><span aria-hidden="true">✦</span> Celebrate with fireworks</button>
+   <a class="action secondary" href="#village">Explore the celebration <span aria-hidden="true">↓</span></a>
+   <button class="action secondary" id="sky-toggle" type="button" aria-pressed="false">Pause fireworks</button>
+  </div>
+  <p class="sr-only" id="celebration-status" aria-live="polite"></p>
+ </section>
+
+ <section class="scene" id="village" aria-label="An illustrated village celebrating Diwali together">
+  <svg class="village" viewBox="0 0 1000 410" role="img" aria-labelledby="scene-title scene-desc" xmlns="http://www.w3.org/2000/svg">
+   <title id="scene-title">Diwali night in a village</title>
+   <desc id="scene-desc">A family and children celebrate beneath the stars, with glowing lamps, festive homes, and colorful fireworks in the distance.</desc>
+   <defs>
+    <filter id="window-glow" x="-150%" y="-150%" width="400%" height="400%">
+     <feGaussianBlur stdDeviation="3" result="blur"/>
+     <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+   </defs>
+   <path class="hill-back" d="M0 258Q110 188 230 246t242-3q106-73 205-8t323 7v168H0Z"/>
+   <path class="hill-front" d="M0 302q160-64 300-5t250 1q136-77 250-5t200 0v117H0Z"/>
+
+   <g aria-hidden="true">
+    <path class="tree" d="M95 285q-49-32-20-64-23-44 23-64 37-41 71 1 43 23 19 63 18 42-25 64Z"/>
+    <path class="trunk" d="M152 265h14v72h-14z"/>
+    <path class="tree" d="M822 282q-42-25-18-57-17-40 24-57 32-35 62 2 38 20 17 56 15 38-22 56Z"/>
+    <path class="trunk" d="M869 264h13v72h-13z"/>
+   </g>
+
+   <g aria-label="Glowing village homes">
+    <g transform="translate(205 171)">
+     <path class="house-roof" d="M0 56 103 0l105 56Z"/>
+     <path class="house-wall" d="M17 53h176v139H17z"/>
+     <path class="house-side" d="M193 53h15v139h-15z"/>
+     <path class="house-trim" d="M10 52h198v9H10z"/>
+     <path class="door" d="M83 115q0-30 23-30t23 30v77H83z"/>
+     <path class="window" d="M35 83h29v32H35zM155 83h24v32h-24z"/>
+     <path class="house-trim" d="M48 83h4v32h-4zM35 97h29v4H35zM165 83h4v32h-4zM155 97h24v4h-24z"/>
+     <path class="garland" d="M19 66q39 34 79 0 42 34 84 0"/>
+     <circle class="bulb" cx="30" cy="74" r="3" fill="#ffdd76"/>
+     <circle class="bulb" cx="49" cy="82" r="3" fill="#ff806c"/>
+     <circle class="bulb" cx="69" cy="82" r="3" fill="#93e5ae"/>
+     <circle class="bulb" cx="91" cy="74" r="3" fill="#ffdd76"/>
+     <circle class="bulb" cx="112" cy="74" r="3" fill="#ff806c"/>
+     <circle class="bulb" cx="134" cy="82" r="3" fill="#93e5ae"/>
+     <circle class="bulb" cx="156" cy="81" r="3" fill="#ffdd76"/>
+     <circle class="bulb" cx="179" cy="72" r="3" fill="#ff806c"/>
+    </g>
+    <g transform="translate(667 205) scale(.8)">
+     <path class="house-roof" d="M0 56 103 0l105 56Z"/>
+     <path class="house-wall" d="M17 53h176v139H17z"/>
+     <path class="house-side" d="M193 53h15v139h-15z"/>
+     <path class="house-trim" d="M10 52h198v9H10z"/>
+     <path class="door" d="M83 115q0-30 23-30t23 30v77H83z"/>
+     <path class="window" d="M35 83h29v32H35zM155 83h24v32h-24z"/>
+     <path class="house-trim" d="M48 83h4v32h-4zM35 97h29v4H35zM165 83h4v32h-4zM155 97h24v4h-24z"/>
+     <path class="garland" d="M19 66q39 34 79 0 42 34 84 0"/>
+     <circle class="bulb" cx="30" cy="74" r="3" fill="#ffdd76"/>
+     <circle class="bulb" cx="57" cy="82" r="3" fill="#ff806c"/>
+     <circle class="bulb" cx="87" cy="75" r="3" fill="#93e5ae"/>
+     <circle class="bulb" cx="116" cy="76" r="3" fill="#ffdd76"/>
+     <circle class="bulb" cx="146" cy="82" r="3" fill="#ff806c"/>
+     <circle class="bulb" cx="178" cy="72" r="3" fill="#93e5ae"/>
+    </g>
+   </g>
+
+   <g aria-label="Family celebrating together" class="person">
+    <g transform="translate(407 262)">
+     <circle cx="23" cy="0" r="13" fill="#bc7957"/>
+     <path d="M10 17q13-9 26 0l9 54H1Z" fill="#d95b67"/>
+     <path d="m9 31-20 23m49-23 13 18M13 70l-3 35m17-35 6 35" fill="none"/>
+     <path d="M-12 54 2 48m47-2 7 11" fill="none" stroke="#e8b47b" stroke-width="5"/>
+    </g>
+    <g transform="translate(475 272)">
+     <circle cx="23" cy="-1" r="13" fill="#9e634e"/>
+     <path d="M9 17q14-10 28 0l10 50H0Z" fill="#4a8f76"/>
+     <path d="m10 30-19 17m47-16 20 17M13 67l-5 33m24-33 7 33" fill="none"/>
+     <path d="m-11 47-8 7m76-6 10 5" fill="none" stroke="#e9b780" stroke-width="5"/>
+    </g>
+    <g transform="translate(548 278) scale(.8)">
+     <circle cx="23" cy="0" r="12" fill="#bd7a58"/>
+     <path d="M11 16q12-9 25 0l8 48H2Z" fill="#efb34d"/>
+     <path d="m10 29-19-16m45 17 22-17M13 64l-4 34m23-34 5 34" fill="none"/>
+     <path d="m-8 13-7-8m81 8 8-7" fill="none" stroke="#e9b780" stroke-width="5"/>
+    </g>
+    <g transform="translate(590 287) scale(.68)">
+     <circle cx="23" cy="0" r="12" fill="#8f5845"/>
+     <path d="M11 16q12-9 25 0l8 48H2Z" fill="#b578ca"/>
+     <path d="m10 29-18-12m43 12 19-14M13 64l-4 34m23-34 5 34" fill="none"/>
+     <path d="m-8 17-8-7m78 0 8-6" fill="none" stroke="#e9b780" stroke-width="5"/>
+    </g>
+   </g>
+
+   <g aria-label="Rows of glowing diyas">
+    <g transform="translate(350 345)">
+     <path d="M0 7q16 17 32 0Z" fill="#ffac59"/>
+     <path class="diya-flame" d="M16 5q-9-11 0-20 9 10 0 20" fill="#fff1a1"/>
+     <ellipse cx="16" cy="7" rx="16" ry="3" fill="#ffd67a"/>
+    </g>
+    <g transform="translate(642 346)">
+     <path d="M0 7q16 17 32 0Z" fill="#ffac59"/>
+     <path class="diya-flame" d="M16 5q-9-11 0-20 9 10 0 20" fill="#fff1a1"/>
+     <ellipse cx="16" cy="7" rx="16" ry="3" fill="#ffd67a"/>
+    </g>
+    <g transform="translate(287 365) scale(.8)">
+     <path d="M0 7q16 17 32 0Z" fill="#ffac59"/>
+     <path class="diya-flame" d="M16 5q-9-11 0-20 9 10 0 20" fill="#fff1a1"/>
+     <ellipse cx="16" cy="7" rx="16" ry="3" fill="#ffd67a"/>
+    </g>
+    <g transform="translate(690 366) scale(.8)">
+     <path d="M0 7q16 17 32 0Z" fill="#ffac59"/>
+     <path class="diya-flame" d="M16 5q-9-11 0-20 9 10 0 20" fill="#fff1a1"/>
+     <ellipse cx="16" cy="7" rx="16" ry="3" fill="#ffd67a"/>
+    </g>
+   </g>
+   <path class="ground" d="M0 385q150-22 300 0t350 0q180-29 350 0v25H0Z"/>
+  </svg>
+  <p class="scene-caption">Together beneath one sky, celebrating the light in every home</p>
+ </section>
+
+ <section class="celebration-section reveal" id="moments" aria-labelledby="moments-title">
+  <p class="section-kicker">Little moments, bright memories</p>
+  <h2 class="section-heading" id="moments-title">A village comes alive</h2>
+  <p class="section-copy">Every Diwali has a story. Move through the frames and discover the little traditions that make the night special.</p>
+  <div class="frame-carousel" id="frame-carousel" aria-roledescription="carousel" aria-label="Diwali celebration moments">
+   <div class="frame-track" id="frame-track">
+    <article class="festival-frame" aria-label="Frame 1 of 4">
+     <div class="frame-art" aria-hidden="true"><span>🏮</span></div>
+     <div><h3>First, the lights</h3><p>Lanterns glow at every doorway. One by one, little flames turn the whole village golden.</p><span class="frame-count">01 / 04 · LIGHT THE WAY</span></div>
+    </article>
+    <article class="festival-frame" aria-label="Frame 2 of 4">
+     <div class="frame-art" aria-hidden="true"><span>🎨</span></div>
+     <div><h3>Colors at the doorstep</h3><p>Families make bright rangoli patterns, welcoming good fortune, neighbors, and friends.</p><span class="frame-count">02 / 04 · MAKE IT COLORFUL</span></div>
+    </article>
+    <article class="festival-frame" aria-label="Frame 3 of 4">
+     <div class="frame-art" aria-hidden="true"><span>🍬</span></div>
+     <div><h3>Something sweet to share</h3><p>Plates of festive treats travel from home to home. There is always room for one more guest.</p><span class="frame-count">03 / 04 · SHARE THE JOY</span></div>
+    </article>
+    <article class="festival-frame" aria-label="Frame 4 of 4">
+     <div class="frame-art" aria-hidden="true"><span>🎆</span></div>
+     <div><h3>All together, under the sky</h3><p>Neighbors gather beneath the stars, sharing laughter, bright wishes, and a beautiful night.</p><span class="frame-count">04 / 04 · CELEBRATE TOGETHER</span></div>
+    </article>
+   </div>
+   <div class="carousel-controls">
+    <button class="carousel-arrow" id="frame-prev" type="button" aria-label="Previous Diwali moment">←</button>
+    <div class="frame-dots" id="frame-dots" aria-label="Choose a Diwali moment">
+     <button class="frame-dot" type="button" aria-label="Show moment 1" aria-current="true"></button>
+     <button class="frame-dot" type="button" aria-label="Show moment 2" aria-current="false"></button>
+     <button class="frame-dot" type="button" aria-label="Show moment 3" aria-current="false"></button>
+     <button class="frame-dot" type="button" aria-label="Show moment 4" aria-current="false"></button>
+    </div>
+    <button class="carousel-arrow" id="frame-next" type="button" aria-label="Next Diwali moment">→</button>
+   </div>
+   <div class="carousel-autoplay"><button id="carousel-play" type="button" aria-pressed="false">▶ Play moments</button></div>
+   <p class="sr-only" id="frame-status" aria-live="polite">Moment 1 of 4: First, the lights.</p>
+  </div>
+ </section>
+
+ <section class="celebration-section diya-section reveal" id="light-the-village" aria-labelledby="diya-title">
+  <p class="section-kicker">Your turn to add a little light</p>
+  <h2 class="section-heading" id="diya-title">Light the village</h2>
+  <p class="section-copy">Tap each diya to light it. Watch the village glow as you fill the courtyard with warmth.</p>
+  <div class="diya-grid" id="diya-grid" aria-label="Interactive diyas">
+   <button class="diya" type="button" aria-pressed="false" aria-label="Light diya 1"><span class="diya-bowl"><span class="diya-flame-icon"></span></span><span class="diya-name">Diya 1</span></button>
+   <button class="diya" type="button" aria-pressed="false" aria-label="Light diya 2"><span class="diya-bowl"><span class="diya-flame-icon"></span></span><span class="diya-name">Diya 2</span></button>
+   <button class="diya" type="button" aria-pressed="false" aria-label="Light diya 3"><span class="diya-bowl"><span class="diya-flame-icon"></span></span><span class="diya-name">Diya 3</span></button>
+   <button class="diya" type="button" aria-pressed="false" aria-label="Light diya 4"><span class="diya-bowl"><span class="diya-flame-icon"></span></span><span class="diya-name">Diya 4</span></button>
+   <button class="diya" type="button" aria-pressed="false" aria-label="Light diya 5"><span class="diya-bowl"><span class="diya-flame-icon"></span></span><span class="diya-name">Diya 5</span></button>
+   <button class="diya" type="button" aria-pressed="false" aria-label="Light diya 6"><span class="diya-bowl"><span class="diya-flame-icon"></span></span><span class="diya-name">Diya 6</span></button>
+   <button class="diya" type="button" aria-pressed="false" aria-label="Light diya 7"><span class="diya-bowl"><span class="diya-flame-icon"></span></span><span class="diya-name">Diya 7</span></button>
+   <button class="diya" type="button" aria-pressed="false" aria-label="Light diya 8"><span class="diya-bowl"><span class="diya-flame-icon"></span></span><span class="diya-name">Diya 8</span></button>
+   <button class="diya" type="button" aria-pressed="false" aria-label="Light diya 9"><span class="diya-bowl"><span class="diya-flame-icon"></span></span><span class="diya-name">Diya 9</span></button>
+   <button class="diya" type="button" aria-pressed="false" aria-label="Light diya 10"><span class="diya-bowl"><span class="diya-flame-icon"></span></span><span class="diya-name">Diya 10</span></button>
+   <button class="diya" type="button" aria-pressed="false" aria-label="Light diya 11"><span class="diya-bowl"><span class="diya-flame-icon"></span></span><span class="diya-name">Diya 11</span></button>
+   <button class="diya" type="button" aria-pressed="false" aria-label="Light diya 12"><span class="diya-bowl"><span class="diya-flame-icon"></span></span><span class="diya-name">Diya 12</span></button>
+  </div>
+  <div class="diya-actions">
+   <button class="action" id="light-all" type="button">✦ Light all diyas</button>
+   <button class="action secondary" id="reset-diyas" type="button">Start again</button>
+  </div>
+  <p class="diya-count" id="diya-count" aria-live="polite">0 of 12 diyas are glowing</p>
+ </section>
+
+ <section class="celebration-section reveal" id="wishes" aria-labelledby="wish-title">
+  <p class="section-kicker">A little light to carry with you</p>
+  <h2 class="section-heading" id="wish-title">A wish, just for you</h2>
+  <p class="section-copy">Take a moment, find a wish, and send a little festive cheer to someone you love.</p>
+  <div class="wish-card">
+   <p class="wish-quote" id="wish-quote">May your home be filled with laughter and your heart with light.</p>
+   <p class="wish-credit">A Diwali wish from Cybernga Computer Services</p>
+   <div class="wish-actions">
+    <button class="wish-button primary" id="new-wish" type="button">Give me another wish ✨</button>
+    <button class="wish-button" id="copy-wish" type="button">Copy this wish</button>
+    <button class="wish-button" id="share-wish" type="button">Share the joy ↗</button>
+   </div>
+   <p class="wish-status" id="wish-status" aria-live="polite"></p>
+  </div>
+ </section>
+
+ <footer class="footer">
+  <span class="footer-mark" aria-hidden="true">✦</span>
+  <p class="brand">Cybernga Computer Services</p>
+  <p>Wishing you a bright and joyful Diwali</p>
+  <p>Contact: <a href="tel:+918767224599">8767224599</a></p>
+  <p class="footer-note">Celebrate with care. Keep a safe distance from fireworks and enjoy the lights together.</p>
+ </footer>
+</main>
+<script>
+const fireworksCanvas=document.getElementById("fireworks");
+const starsCanvas=document.getElementById("stars");
+const fireworkContext=fireworksCanvas.getContext("2d");
+const starsContext=starsCanvas.getContext("2d");
+const reducedMotion=window.matchMedia("(prefers-reduced-motion: reduce)");
+const colors=["#ffd477","#ff6f91","#81e6c1","#bda0ff","#ff9c5b","#ffffff"];
+const wishes=[
+ "May your home be filled with laughter and your heart with light.",
+ "May every diya bring a new reason to smile this Diwali.",
+ "Wishing you a bright beginning and a beautiful year ahead.",
+ "May the warmth you share return to you a hundred times over.",
+ "May joy find its way to your home and stay all year long.",
+ "Here is to sweet moments, kind hearts, and bright new beginnings."
+];
+let particles=[];
+let rockets=[];
+let stars=[];
+let meteors=[];
+let frame=0;
+let lastBurst=0;
+let nextRocket=0;
+let nextMeteor=1800;
+let autoFireworks=true;
+let currentFrame=0;
+let previousWish=0;
+let carouselTimer=0;
+
+function resizeCanvases(){
+ const dpr=Math.min(window.devicePixelRatio||1,2);
+ [fireworksCanvas,starsCanvas].forEach(canvas=>{
+  canvas.width=Math.round(window.innerWidth*dpr);
+  canvas.height=Math.round(window.innerHeight*dpr);
+  canvas.style.width=window.innerWidth+"px";
+  canvas.style.height=window.innerHeight+"px";
+ });
+ fireworkContext.setTransform(dpr,0,0,dpr,0,0);
+ starsContext.setTransform(dpr,0,0,dpr,0,0);
+ createStars();
+}
+
+function createStars(){
+ stars=[];
+ const count=Math.min(130,Math.round(window.innerWidth*window.innerHeight/9500));
+ for(let i=0;i<count;i++){
+  stars.push({
+   x:Math.random()*window.innerWidth,
+   y:Math.random()*window.innerHeight*.68,
+   radius:.4+Math.random()*1.25,
+   phase:Math.random()*Math.PI*2
+  });
+ }
+}
+
+function addBurst(x,y,color=colors[Math.floor(Math.random()*colors.length)]){
+ const count=48+Math.floor(Math.random()*24);
+ for(let i=0;i<count;i++){
+  const angle=Math.PI*2*i/count+(Math.random()-.5)*.11;
+  const speed=1.2+Math.random()*3.5;
+  particles.push({
+   x,y,
+   vx:Math.cos(angle)*speed,
+   vy:Math.sin(angle)*speed,
+   life:48+Math.random()*28,
+   age:0,
+   radius:1+Math.random()*1.7,
+   color
+  });
+ }
+}
+
+function launchRocket(x=Math.random()*window.innerWidth){
+ const startY=window.innerHeight+8;
+ const targetY=window.innerHeight*(.12+Math.random()*.25);
+ const frames=Math.max(36,(startY-targetY)/(4+Math.random()*1.7));
+ rockets.push({
+  x,
+  y:startY,
+  vx:(Math.random()-.5)*1.1,
+  vy:-(startY-targetY)/frames,
+  targetY,
+  color:colors[Math.floor(Math.random()*colors.length)],
+  trail:[]
+ });
+}
+
+function paintStars(time){
+ starsContext.clearRect(0,0,window.innerWidth,window.innerHeight);
+ for(const star of stars){
+  const alpha=.3+.65*(.5+.5*Math.sin(time*.001+star.phase));
+  starsContext.fillStyle="rgba(255,239,205,"+alpha+")";
+  starsContext.beginPath();
+  starsContext.arc(star.x,star.y,star.radius,0,Math.PI*2);
+  starsContext.fill();
+ }
+ if(!reducedMotion.matches&&time>nextMeteor){
+  meteors.push({
+   x:Math.random()*window.innerWidth,
+   y:Math.random()*window.innerHeight*.32,
+   vx:-5-Math.random()*3,
+   vy:3+Math.random()*2,
+   life:0,
+   maxLife:24+Math.random()*15
+  });
+  nextMeteor=time+1800+Math.random()*3600;
+ }
+ meteors=meteors.filter(meteor=>meteor.life<meteor.maxLife);
+ for(const meteor of meteors){
+  meteor.x+=meteor.vx;
+  meteor.y+=meteor.vy;
+  meteor.life++;
+  starsContext.globalAlpha=1-meteor.life/meteor.maxLife;
+  starsContext.strokeStyle="#fff1cd";
+  starsContext.lineWidth=1.5;
+  starsContext.beginPath();
+  starsContext.moveTo(meteor.x,meteor.y);
+  starsContext.lineTo(meteor.x-meteor.vx*5,meteor.y-meteor.vy*5);
+  starsContext.stroke();
+ }
+ starsContext.globalAlpha=1;
+}
+
+function animate(time){
+ paintStars(time);
+ fireworkContext.clearRect(0,0,window.innerWidth,window.innerHeight);
+
+ if(autoFireworks&&time-lastBurst>1900){
+  launchRocket(window.innerWidth*(.15+Math.random()*.7));
+  lastBurst=time;
+ }
+ if(autoFireworks&&time>nextRocket){
+  if(Math.random()<.35)launchRocket(window.innerWidth*(.15+Math.random()*.7));
+  nextRocket=time+750+Math.random()*1400;
+ }
+
+ rockets=rockets.filter(rocket=>rocket.y>rocket.targetY);
+ for(const rocket of rockets){
+  rocket.trail.push({x:rocket.x,y:rocket.y});
+  if(rocket.trail.length>8)rocket.trail.shift();
+  rocket.x+=rocket.vx;
+  rocket.y+=rocket.vy;
+  fireworkContext.beginPath();
+  fireworkContext.moveTo(rocket.trail[0].x,rocket.trail[0].y);
+  for(const point of rocket.trail)fireworkContext.lineTo(point.x,point.y);
+  fireworkContext.strokeStyle=rocket.color;
+  fireworkContext.globalAlpha=.68;
+  fireworkContext.lineWidth=2;
+  fireworkContext.stroke();
+  fireworkContext.globalAlpha=1;
+  fireworkContext.fillStyle="#fff6d8";
+  fireworkContext.beginPath();
+  fireworkContext.arc(rocket.x,rocket.y,2.5,0,Math.PI*2);
+  fireworkContext.fill();
+ }
+ const arrived=rockets.filter(rocket=>rocket.y<=rocket.targetY);
+ rockets=rockets.filter(rocket=>rocket.y>rocket.targetY);
+ for(const rocket of arrived)addBurst(rocket.x,rocket.y,rocket.color);
+
+ particles=particles.filter(particle=>particle.age<particle.life);
+ for(const particle of particles){
+  particle.age++;
+  particle.x+=particle.vx;
+  particle.y+=particle.vy;
+  particle.vy+=.035;
+  particle.vx*=.992;
+  const opacity=1-particle.age/particle.life;
+  fireworkContext.globalAlpha=opacity;
+  fireworkContext.fillStyle=particle.color;
+  fireworkContext.beginPath();
+  fireworkContext.arc(particle.x,particle.y,particle.radius,0,Math.PI*2);
+  fireworkContext.fill();
+ }
+ fireworkContext.globalAlpha=1;
+
+ if(!reducedMotion.matches)frame=requestAnimationFrame(animate);
+}
+
+function celebrate(){
+ const width=window.innerWidth;
+ const height=window.innerHeight;
+ addBurst(width*(.2+Math.random()*.6),height*(.13+Math.random()*.24));
+ addBurst(width*(.2+Math.random()*.6),height*(.15+Math.random()*.26));
+ if(!reducedMotion.matches){
+  launchRocket(width*(.25+Math.random()*.5));
+  launchRocket(width*(.25+Math.random()*.5));
+   if(!frame)frame=requestAnimationFrame(animate);
+ }else{
+  fireworkContext.clearRect(0,0,width,height);
+  for(const particle of particles){
+   fireworkContext.fillStyle=particle.color;
+   fireworkContext.beginPath();
+   fireworkContext.arc(particle.x,particle.y,particle.radius,0,Math.PI*2);
+   fireworkContext.fill();
+  }
+ }
+ document.getElementById("celebration-status").textContent="A burst of Diwali fireworks is lighting up the sky.";
+}
+
+const carousel=document.getElementById("frame-carousel");
+const frameTrack=document.getElementById("frame-track");
+const festivalFrames=[...frameTrack.children];
+const frameDots=[...document.querySelectorAll(".frame-dot")];
+
+function stopCarousel(){
+ clearInterval(carouselTimer);
+ carouselTimer=0;
+ const button=document.getElementById("carousel-play");
+ button.textContent="▶ Play moments";
+ button.setAttribute("aria-pressed","false");
+}
+
+function startCarousel(){
+ if(reducedMotion.matches)return;
+ stopCarousel();
+ const button=document.getElementById("carousel-play");
+ button.textContent="Ⅱ Pause moments";
+ button.setAttribute("aria-pressed","true");
+ carouselTimer=setInterval(()=>showFrame(currentFrame+1),4200);
+}
+
+function showFrame(index){
+ currentFrame=(index+festivalFrames.length)%festivalFrames.length;
+ frameTrack.style.transform="translateX(-"+currentFrame*100+"%)";
+ festivalFrames.forEach((card,i)=>card.setAttribute("aria-hidden",String(i!==currentFrame)));
+ frameDots.forEach((dot,i)=>dot.setAttribute("aria-current",String(i===currentFrame)));
+ document.getElementById("frame-status").textContent="Moment "+(currentFrame+1)+" of "+festivalFrames.length+": "+festivalFrames[currentFrame].querySelector("h3").textContent+".";
+}
+
+document.getElementById("frame-prev").addEventListener("click",()=>showFrame(currentFrame-1));
+document.getElementById("frame-next").addEventListener("click",()=>showFrame(currentFrame+1));
+frameDots.forEach((dot,index)=>dot.addEventListener("click",()=>showFrame(index)));
+document.getElementById("carousel-play").addEventListener("click",()=>{
+ if(carouselTimer)stopCarousel();
+ else startCarousel();
+});
+carousel.addEventListener("focusin",stopCarousel);
+carousel.addEventListener("keydown",event=>{
+ if(event.key==="ArrowLeft"){event.preventDefault();showFrame(currentFrame-1)}
+ if(event.key==="ArrowRight"){event.preventDefault();showFrame(currentFrame+1)}
+});
+let touchStartX=null;
+carousel.addEventListener("touchstart",event=>{touchStartX=event.changedTouches[0].clientX},{passive:true});
+carousel.addEventListener("touchend",event=>{
+ if(touchStartX===null)return;
+ const distance=event.changedTouches[0].clientX-touchStartX;
+ if(Math.abs(distance)>45)showFrame(currentFrame+(distance<0?1:-1));
+ touchStartX=null;
+},{passive:true});
+
+const diyas=[...document.querySelectorAll(".diya")];
+const diyaCount=document.getElementById("diya-count");
+
+function updateDiyas(){
+ const lit=diyas.filter(diya=>diya.classList.contains("is-lit")).length;
+ diyaCount.textContent=lit+" of "+diyas.length+" diyas "+(lit===diyas.length?"are glowing — the village is shining!":"are glowing");
+}
+
+diyas.forEach(diya=>diya.addEventListener("click",()=>{
+ const lit=diya.classList.toggle("is-lit");
+ diya.setAttribute("aria-pressed",String(lit));
+ diya.setAttribute("aria-label",(lit?"Extinguish ":"Light ")+diya.querySelector(".diya-name").textContent.toLowerCase());
+ updateDiyas();
+ if(lit&&Math.random()<.25)addBurst(window.innerWidth*(.3+Math.random()*.4),window.innerHeight*.55);
+ if(lit){
+  diya.classList.remove("is-lighting");
+  void diya.offsetWidth;
+  diya.classList.add("is-lighting");
+  setTimeout(()=>diya.classList.remove("is-lighting"),450);
+ }
+}));
+
+document.getElementById("light-all").addEventListener("click",()=>{
+ diyas.forEach((diya,index)=>{
+  diya.classList.add("is-lit");
+  diya.setAttribute("aria-pressed","true");
+  diya.setAttribute("aria-label","Extinguish "+diya.querySelector(".diya-name").textContent.toLowerCase());
+  diya.style.animationDelay=(index*45)+"ms";
+  diya.classList.remove("is-lighting");
+  void diya.offsetWidth;
+  diya.classList.add("is-lighting");
+  setTimeout(()=>{
+   diya.classList.remove("is-lighting");
+   diya.style.animationDelay="";
+  },1000);
+ });
+ updateDiyas();
+ celebrate();
+});
+
+document.getElementById("reset-diyas").addEventListener("click",()=>{
+ diyas.forEach(diya=>{
+  diya.classList.remove("is-lit");
+  diya.setAttribute("aria-pressed","false");
+  diya.setAttribute("aria-label","Light "+diya.querySelector(".diya-name").textContent.toLowerCase());
+  diya.style.animationDelay="";
+ });
+ updateDiyas();
+});
+
+document.getElementById("new-wish").addEventListener("click",()=>{
+ let next=Math.floor(Math.random()*wishes.length);
+ if(wishes.length>1&&next===previousWish)next=(next+1)%wishes.length;
+ previousWish=next;
+ const quote=document.getElementById("wish-quote");
+ quote.animate([{opacity:.25,transform:"translateY(8px)"},{opacity:1,transform:"translateY(0)"}],{duration:380,easing:"ease-out"});
+ quote.textContent=wishes[next];
+ document.getElementById("wish-status").textContent="A new wish, picked just for you.";
+});
+
+async function copyWish(){
+ const text=document.getElementById("wish-quote").textContent+" — Cybernga Computer Services";
+ try{
+  if(navigator.clipboard&&window.isSecureContext){
+   await navigator.clipboard.writeText(text);
+  }else{
+   const field=document.createElement("textarea");
+   field.value=text;
+   field.setAttribute("readonly","");
+   field.style.position="fixed";
+   field.style.opacity="0";
+   document.body.appendChild(field);
+   field.select();
+   const copied=document.execCommand("copy");
+   field.remove();
+   if(!copied)throw new Error("Copy command was not available.");
+  }
+  document.getElementById("wish-status").textContent="Wish copied — send it to someone you love!";
+ }catch(error){
+  document.getElementById("wish-status").textContent="Could not copy automatically. You can select and copy the wish above.";
+ }
+}
+
+document.getElementById("copy-wish").addEventListener("click",copyWish);
+document.getElementById("share-wish").addEventListener("click",async()=>{
+ const text=document.getElementById("wish-quote").textContent+" — Cybernga Computer Services";
+ if(!navigator.share){
+  await copyWish();
+  return;
+ }
+ try{
+  await navigator.share({title:"A Diwali wish for you",text,url:window.location.href});
+  document.getElementById("wish-status").textContent="Thanks for sharing a little Diwali joy!";
+ }catch(error){
+  if(error.name==="AbortError"){
+   document.getElementById("wish-status").textContent="Sharing cancelled.";
+  }else{
+   document.getElementById("wish-status").textContent="Unable to open sharing on this device. Try copying the wish instead.";
+  }
+ }
+});
+
+const revealItems=[...document.querySelectorAll(".reveal")];
+if("IntersectionObserver"in window&&!reducedMotion.matches){
+ const revealObserver=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+   if(entry.isIntersecting){
+    entry.target.classList.add("is-visible");
+    revealObserver.unobserve(entry.target);
+   }
+  });
+ },{threshold:.12});
+ revealItems.forEach(item=>revealObserver.observe(item));
+}else{
+ revealItems.forEach(item=>item.classList.add("is-visible"));
+}
+
+showFrame(0);
+document.getElementById("celebrate").addEventListener("click",celebrate);
+document.getElementById("sky-toggle").addEventListener("click",event=>{
+ autoFireworks=!autoFireworks;
+ event.currentTarget.textContent=autoFireworks?"Pause fireworks":"Resume fireworks";
+ event.currentTarget.setAttribute("aria-pressed",String(!autoFireworks));
+ if(autoFireworks&&!reducedMotion.matches&&!frame)frame=requestAnimationFrame(animate);
+});
+document.querySelector(".hero").addEventListener("click",event=>{
+ if(event.target.closest("button,a")||reducedMotion.matches)return;
+ launchRocket(event.clientX);
+ if(!skyPaused&&!frame)frame=requestAnimationFrame(animate);
+});
+const scrollProgressBar=document.getElementById("scroll-progress-bar");
+let scrollUpdate=0;
+function updateScrollProgress(){
+ const scrollable=document.documentElement.scrollHeight-window.innerHeight;
+ const progress=scrollable>0?window.scrollY/scrollable:0;
+ scrollProgressBar.style.transform="scaleX("+Math.max(0,Math.min(1,progress))+")";
+ scrollUpdate=0;
+}
+window.addEventListener("scroll",()=>{
+ if(!scrollUpdate)scrollUpdate=requestAnimationFrame(updateScrollProgress);
+},{passive:true});
+window.addEventListener("resize",resizeCanvases);
+document.addEventListener("visibilitychange",()=>{
+ if(document.hidden){
+  cancelAnimationFrame(frame);
+  frame=0;
+ }else if(!reducedMotion.matches&&!frame){
+  frame=requestAnimationFrame(animate);
+ }
+});
+reducedMotion.addEventListener("change",()=>{
+ cancelAnimationFrame(frame);
+ frame=0;
+ stopCarousel();
+ autoFireworks=!reducedMotion.matches;
+ const skyToggle=document.getElementById("sky-toggle");
+ skyToggle.textContent=autoFireworks?"Pause fireworks":"Resume fireworks";
+ skyToggle.setAttribute("aria-pressed",String(!autoFireworks));
+ if(!reducedMotion.matches&&!document.hidden)frame=requestAnimationFrame(animate);
+});
+if(reducedMotion.matches)autoFireworks=false;
+resizeCanvases();
+if(reducedMotion.matches)paintStars(0);
+else frame=requestAnimationFrame(animate);
+updateScrollProgress();
+</script>
+</body>
+</html>
